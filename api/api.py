@@ -10,6 +10,7 @@ def hello():
     return "Hello World!"
 
 @app.route('/thumbtack/<url>', methods=['POST'])
+@crossdomain(origin='*')
 def add_message(url):
     try: 
         json = request.get_json()

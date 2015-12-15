@@ -5,7 +5,7 @@ new Fingerprint2().get(function(result, components){
 	var logdata = { 'url': window.location.href,  'date': new Date(), 'hash': result, 'components':components }
 	console.log(logdata);
 	var request = new XMLHttpRequest();
-	request.open('POST', 'http://localhost:8001/thumbtack/' + window.location.href, true);
+	request.open('POST', 'http://vps.provolot.com:8002/thumbtack/test', true);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 	request.send(logdata);
 });
