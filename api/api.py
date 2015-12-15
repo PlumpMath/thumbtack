@@ -1,5 +1,6 @@
 from flask import Flask, request
 from pymongo import MongoClient
+import datetime
 import secrets
 
 app = Flask(__name__)
@@ -12,7 +13,9 @@ def hello():
 def add_message(url):
     try: 
         json = request.get_json()
-        json['remote_addr'] = request.remote_addr
+        json['fromapi_remoteaddr'] = request.remote_addr
+        json['fromapi_date'] = datetime.datetime.utcnow()
+        json['url'] = url
 
         client = MongoClient(secrets.MONGODBHOST)
         db = client[secrets.MONGODBDB]

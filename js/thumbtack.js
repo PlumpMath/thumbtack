@@ -5,7 +5,7 @@ new Fingerprint2().get(function(result, components){
 	var logdata = { 'url': window.location.href,  'date': new Date(), 'hash': result, 'components':components }
 	console.log(logdata);
 	var request = new XMLHttpRequest();
-	request.open('POST', '/my/url', true);
+	request.open('POST', 'http://localhost:8001/thumbtack/' + window.location.href, true);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-	request.send(data);
+	request.send(logdata);
 });
