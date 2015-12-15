@@ -2,6 +2,7 @@ from flask import Flask, request
 from pymongo import MongoClient
 import datetime
 import secrets
+import ssl
 
 app = Flask(__name__)
 
@@ -31,4 +32,6 @@ def add_message(url):
         return "failure"
 
 if __name__ == "__main__":
-    app.run(port=8001)
+    #context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    #context.load_cert_chain(certfile='/etc/letsencrypt/live/vps.provolot.com/cert.pem', keyfile='/etc/letsencrypt/live/vps.provolot.com/privkey.pem')
+    app.run(host='0.0.0.0', port=8002)
